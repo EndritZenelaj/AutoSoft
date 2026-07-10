@@ -1,0 +1,943 @@
+/* --- FUNDAMENTALS --- */
+:root {
+    --color-bg-dark: #111111; /* E zezë/gri e errët */
+    --color-bg-dark-accent: #1a1a1a;
+    --color-primary-red: #e31b23; /* E kuqe e ndezur */
+    --color-white: #ffffff;
+    --color-light-grey: #cccccc;
+    --font-main: 'Poppins', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-bg-dark);
+    color: var(--color-white);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+.img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+/* --- UTILITIES --- */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+}
+
+.btn-primary {
+    background-color: var(--color-primary-red);
+    color: var(--color-white);
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+}
+
+.btn-primary-lg {
+    background-color: var(--color-primary-red);
+    color: var(--color-white);
+    padding: 20px 40px;
+    border-radius: 10px;
+    font-weight: 700;
+    font-size: 1.2rem;
+    display: inline-block;
+}
+
+.btn-primary:hover, .btn-primary-lg:hover {
+    background-color: var(--color-white);
+    color: var(--color-primary-red);
+}
+
+.btn-secondary {
+    border: 2px solid var(--color-white);
+    color: var(--color-white);
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-white);
+    color: var(--color-bg-dark);
+}
+
+/* --- SECTION STYLES --- */
+
+/* Header */
+header {
+    background-color: rgba(17, 17, 17, 0.9);
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #333;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.logo span {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    font-weight: 500;
+}
+
+nav a:hover {
+    color: var(--color-primary-red);
+}
+
+/* --- HERO SECTION SI BACKGROUND --- */
+.hero {
+    padding-top: 120px; /* E ulim pak që mos të ketë hapësirë të tepërt sipër */
+    padding-bottom: 120px;
+    
+    background: linear-gradient(rgba(17, 17, 17, 0.8), rgba(17, 17, 17, 0.6)), 
+                url('../images/makina1.avif'); 
+    
+    background-size: cover;       
+    background-position: center;  
+    background-repeat: no-repeat;
+    background-attachment: fixed; 
+    
+    display: flex;
+    align-items: center;
+    min-height: 90vh; /* Rritet pak lartësia për t'i dhënë frymëmarrje fotos */
+}
+
+/* Kujdesu që teksti të jetë brenda container-it për t'u rreshtuar majtas bukur */
+.hero-text {
+    max-width: 650px; 
+    padding: 20px;
+}
+
+.hero-text h1 {
+    font-size: 5rem; /* E bëjmë titullin kryesor më madhështor */
+    font-weight: 800;
+    letter-spacing: 3px;
+    line-height: 1;
+    margin-bottom: 15px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+.hero-text h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #e31b23; /* E kuqja zyrtare e AutoSoft */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero-text p {
+    color: #e0e0e0; /* Gri e hapur me kontrast të lartë */
+    margin-bottom: 35px;
+    font-size: 1.15rem;
+    line-height: 1.7; /* Shton hapësirë mes rreshtave të tekstit që të lexohet më lehtë */
+    font-weight: 300;
+}
+
+/* --- STILIMI I RI I BUTTONIT --- */
+.hero-actions .btn-secondary {
+    display: inline-block;
+    background-color: transparent;
+    color: #ffffff;
+    padding: 14px 35px; /* Më shumë hapësirë brenda butonit */
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid #e31b23; /* Bordura bëhet e kuqe që të përshtatet me brendin */
+    border-radius: 50px; /* I jep një formë të rrumbullakosur e moderne (pill-shaped) */
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    box-shadow: 0 4px 15px rgba(227, 27, 35, 0.2); /* Një hije e lehtë e kuqe në sfond */
+}
+
+/* Efekti kur vendos miun (hover) mbi buton */
+.hero-actions .btn-secondary:hover {
+    background-color: #e31b23; /* Mbushet me të kuqe */
+    color: #ffffff;
+    transform: translateY(-3px); /* Ngrihet pak lart si efekt 3D */
+    box-shadow: 0 6px 20px rgba(227, 27, 35, 0.4); /* Hija bëhet më e fortë */
+}
+
+/* Modules */
+.modules {
+    background-color: var(--color-bg-dark-accent);
+    padding: 80px 0;
+}
+
+.modules h3 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--color-white);
+    margin-bottom: 50px;
+}
+
+.module-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.module-card {
+    background-color: var(--color-primary-red);
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.module-card:hover {
+    transform: translateY(-5px);
+}
+
+.module-card i {
+    font-size: 3rem;
+    color: var(--color-white);
+    margin-bottom: 20px;
+}
+
+.module-card h4 {
+    color: var(--color-white);
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+/* Features (Screenshots) */
+.features {
+    padding: 80px 0;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.feature-item img {
+    border: 3px solid var(--color-primary-red);
+    border-radius: 50px;
+    margin-bottom: 15px;
+}
+
+.feature-item p {
+    text-align: center;
+    color: var(--color-light-grey);
+    font-weight: 500;
+}
+
+/* Contact / Demo */
+.contact {
+    background-color: var(--color-bg-dark-accent);
+    padding: 80px 0;
+}
+
+.contact-info h3 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    color: var(--color-light-grey);
+    margin-bottom: 30px;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-links a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+}
+
+.contact-links a:hover {
+    color: var(--color-primary-red);
+}
+
+.contact-links i {
+    color: var(--color-primary-red);
+    font-size: 1.3rem;
+}
+
+.demo-cta {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.demo-cta h3 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+/* Footer */
+footer {
+    padding: 20px 0;
+    text-align: center;
+    background-color: #0d0d0d;
+    border-top: 1px solid #222;
+}
+
+footer p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+@media (max-width: 992px) {
+    .grid-2, .module-grid, .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-text h1 {
+        font-size: 3rem;
+    }
+
+    .module-grid, .features-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    header nav, header .btn-primary {
+        display: none; /* Mund të krijoni një burger menu këtu */
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+}
+
+.hero .container {
+    margin-left: 13%; /* Kjo e shtyn të gjithë përmbajtjen drejt cepit të majtë të ekranit */
+    max-width: 100%; /* Lejon container-in të dalë nga korniza standarde 1200px vetëm për këtë seksion */
+}
+
+/* --- HEADER (I PËRDITËSUAR ME SFOND TË BARDHË) --- */
+header {
+    background-color: rgb(255, 255, 255); /* E bardhë me pak transparencë luksoze */
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    /* Heqim bordurën e errët dhe shtojmë një hije të lehtë e elegante */
+    border-bottom: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); 
+    backdrop-filter: blur(5px); /* Efekt mjegullimi prapa menusë */
+    transition: all 0.3s ease;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Stilimi i emrit (nëse e keni ende si tekst pranë logos) */
+.logo span {
+    color: #111111; /* Teksti bëhet i zi */
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* --- NAVIGACIONI (SHKRONJAT) --- */
+nav ul {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    font-weight: 600;
+    color: #333333; /* Ngjyra e shkronjave bëhet gri e errët për lexim më të këndshëm */
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Kur kalon miun mbi linqet e menusë */
+nav a:hover {
+    color: #e31b23; /* Mbetet e kuqe në hover si kontrast */
+}
+
+
+/* --- HEADER PËRDITËSIMI PËR LOGO MË TË MADHE --- */
+header {
+    background-color: rgb(255, 255, 255); 
+    padding: 10px 0; /* E zvogëlojmë pak padding-un e header pasi vetë logoja do të marrë hapësirë */
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); 
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+/* --- STILIMI I RI DHE I THEKSUAR I LOGOS --- */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo img {
+    height: 65px; /* U rrit nga 40px/50px në 65px që të dallohen detajet e makinës dhe mburojës */
+    width: auto;   /* Ruhen proporcionet perfekte */
+    object-fit: contain;
+    filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.15)); /* Shton një hije të lehtë pas logos që ta nxjerrë në pah */
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efekt elastik në hover */
+}
+
+/* Kur klienti kalon miun mbi logo */
+.logo:hover img {
+    transform: scale(1.06); /* Zmadhohet lehtësisht për ndërveprim modern */
+}
+
+.logo span {
+    color: #111111; 
+    font-size: 1.6rem; /* Rritet pak edhe fonti i shkronjave pranë logos */
+    font-weight: 800;  /* Bëhet ekstra bold */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* --- BUTONI "BOOK A DEMO" NË HEADER --- */
+.btn-primary {
+    background-color: #e31b23; /* E kuqja zyrtare */
+    color: #ffffff;            /* Shkronjat e bardha */
+    padding: 10px 22px;
+    border-radius: 20px;        /* Mund ta bësh edhe 50px nëse e dëshiron krejtësisht të rrumbullakosur */
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    
+    /* KORRIGJIMI: Vendoset një bordurë fillestare me të njëjtën ngjyrë që mos të ketë lëvizje pikselësh */
+    border: 2px solid #e31b23; 
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* --- EFEKTI HOVER (KUR KALON MIUN) --- */
+.btn-primary:hover {
+    background-color: #ffffff; /* Sfondi bëhet i bardhë */
+    color: #e31b23;            /* Shkronjat bëhen të kuqe që të lexohen mbi të bardhë */
+    border: 2px solid #e31b23; /* Vija rrethuese (rrethi) bëhet e kuqe e theksuar */
+    transform: translateY(-1px); /* Një ngritje e lehtë elegante */
+    box-shadow: 0 4px 12px rgba(227, 27, 35, 0.15); /* Një hije e lehtë në hover */
+}  
+
+/* --- STILIMI I BUTONIT "MËSO MË SHUMË" (GJENDJA NORMALE) --- */
+.hero-actions .btn-secondary {
+    display: inline-block;
+    background-color: transparent;
+    color: #ffffff;
+    padding: 14px 35px; 
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    /* KORRIGJIMI: Vija (rrethi) rrethues bëhet e bardhë në gjendje normale */
+    border: 2px solid #ffffff; 
+    
+    border-radius: 50px; 
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    
+    /* Ndryshojmë pak hijen që të jetë më neutrale/e bardhë në fillim */
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05); 
+}
+
+/* --- EFEKTI HOVER (KUR KALON MIUN) --- */
+.hero-actions .btn-secondary:hover {
+    background-color: #e31b23; /* Mbushet me të kuqe */
+    border-color: #e31b23;     /* Vija (rrethi) bëhet e kuqe */
+    color: #ffffff;            /* Shkronjat mbeten të bardha */
+    transform: translateY(-3px); 
+    box-shadow: 0 6px 20px rgba(227, 27, 35, 0.4); 
+}
+
+/* --- SEKSIONI RRETH NESH --- */
+.about {
+    background-color: #ffffff; /* Sfond i bardhë për kontrast të pastër */
+    padding: 100px 0;
+    color: #111111; /* Teksti bëhet i zi që të lexohet mbi të bardhë */
+}
+
+.about h2 {
+    color: #e31b23; /* E kuqja zyrtare për titullin e vogël */
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.about h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    color: #111111;
+}
+
+.about p {
+    color: #555555; /* Gri e errët për tekstin që të mos vrasë syrin */
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+/* Stilimi i tekstit të fshehur */
+.hidden-text {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+    opacity: 0;
+}
+
+/* Klasa që do të shtohet përmes JavaScript kur klikohet butoni */
+.hidden-text.show {
+    max-height: 500px; /* Hapësira maksimale që mund të zërë teksti i ri */
+    opacity: 1;
+    margin-bottom: 20px;
+}
+
+/* Stilimi i butonit "Lexo Më Shumë" */
+.btn-about {
+    background-color: transparent;
+    color: #e31b23;
+    border: 2px solid #e31b23;
+    padding: 12px 30px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-about:hover {
+    background-color: #e31b23;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(227, 27, 35, 0.2);
+}
+
+.about-image img {
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* --- SLIDER MODULËT --- */
+.modules {
+    background-color: var(--color-bg-dark-accent);
+    padding: 80px 0;
+}
+
+.modules h3 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: var(--color-white);
+    margin-bottom: 50px;
+}
+
+/* Mbështjellësi relativ për të pozicionuar butonat anash */
+.slider-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 0 50px; /* Hapësirë që butonat mos të prekin kartat direkt */
+}
+
+/* Kontenitori i kartave që rreshtohen në një vijë */
+.module-slider {
+    display: flex;
+    gap: 30px;
+    overflow-x: hidden; /* Fsheh shiritin e lëvizjes poshtë */
+    scroll-behavior: smooth;
+    width: 100%;
+    padding: 20px 0; /* Hapësirë për hije ose transformime në hover */
+}
+
+/* Karta individuale brenda slider-it */
+.module-card {
+    background-color: var(--color-primary-red);
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    /* CRITICAL PËR SLIDER: Përcakton sa karta shfaqen njëkohësisht */
+    flex: 0 0 calc(33.333% - 20px); /* 3 karta në ekran */
+}
+
+.module-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(227, 27, 35, 0.3);
+}
+
+.module-card i {
+    font-size: 3.5rem;
+    color: var(--color-white);
+    margin-bottom: 20px;
+}
+
+.module-card h4 {
+    color: var(--color-white);
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+/* STILIMI I BUTONAVE MAJTAS / DJATHTAS */
+.slider-btn {
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-white);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    z-index: 10;
+    transition: all 0.3s ease;
+}
+
+.slider-btn:hover {
+    background-color: var(--color-primary-red);
+    border-color: var(--color-primary-red);
+    transform: scale(1.1);
+}
+
+.prev-btn {
+    left: 0;
+}
+
+.next-btn {
+    right: 0;
+}
+
+/* RESPONSIVE PËR SLIDER */
+@media (max-width: 992px) {
+    .module-card {
+        flex: 0 0 calc(50% - 15px); /* 2 karta në ekran për tablet */
+    }
+}
+
+@media (max-width: 600px) {
+    .slider-wrapper {
+        padding: 0; /* Heqim hapësirën anash në telefon */
+    }
+    .slider-btn {
+        display: none; /* Fshehim butonat në telefon, lëvizet thjesht me gisht (touch) */
+    }
+    .module-slider {
+        overflow-x: auto; /* Lejon rrëshqitjen me gisht */
+        padding: 10px 20px;
+    }
+    .module-card {
+        flex: 0 0 80%; /* 1 kartë e plotë dhe pak nga tjetra në telefon */
+    }
+}
+
+/* Mbështjellësi tani nuk ka nevojë për padding anësor pasi nuk ka butona */
+.slider-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.module-slider {
+    display: flex;
+    gap: 30px;
+    overflow-x: hidden; /* Fsheh shiritin e scroll-it */
+    scroll-behavior: smooth;
+    width: 100%;
+    padding: 20px 0;
+}
+
+.features h3 {
+    text-align: center;
+    font-size: 2.2rem;
+    color: var(--color-white);
+    margin-bottom: 50px;
+}
+
+/* --- 1. SEKSIONI RRETH NESH (TANI I ERRËT) --- */
+.about {
+    background-color: var(--color-bg-dark-accent); /* Merr ngjyrën e errët që kishte seksioni i moduleve */
+    padding: 100px 0;
+    color: #ffffff; /* Teksti kryesor bëhet i bardhë */
+}
+
+.about h2 {
+    color: #e31b23; /* E kuqja zyrtare */
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+
+.about h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 25px;
+    color: #ffffff; /* Titulli bëhet i bardhë */
+}
+
+.about p {
+    color: #e0e0e0; /* Gri e hapur për lexim të këndshëm në sfond të errët */
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+/* Butoni "Lexo Më Shumë" përshtatet për sfond të errët */
+.btn-about {
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    padding: 12px 30px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-about:hover {
+    background-color: #e31b23;
+    border-color: #e31b23;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+
+/* --- 2. SEKSIONI MODULET (TANI I BARDHË) --- */
+.modules {
+    background-color: #ffffff; /* Merr sfondin e bardhë */
+    padding: 80px 0;
+}
+
+.modules h3 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #111111; /* Titulli kryesor bëhet i zi */
+    margin-bottom: 50px;
+}
+
+/* Karta individuale brenda slider-it (mbeten të kuqe, por u shtojmë një hije më të bukur mbi sfondin e bardhë) */
+.module-card {
+    background-color: #e31b23; 
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex: 0 0 calc(33.333% - 20px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Hije e lehtë që të duken sikur "rihen" mbi sfond të bardhë */
+}
+
+.module-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(227, 27, 35, 0.25);
+}
+
+.module-card i {
+    font-size: 3.5rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.module-card h4 {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1.25rem;
+}
+
+/* ==========================================================================
+   KODI PËR RESPONSIVE (PËR TELEFON DHE TABLET)
+   ========================================================================== */
+
+/* 1. PËR TABLET (Ekranet nën 992px gjerësi) */
+@media (max-width: 992px) {
+    .container {
+        width: 90%; /* I jep pak hapësirë anash që teksti mos të prekë cepet e ekranit */
+        padding: 0 20px;
+    }
+
+    /* Hero Section */
+    .hero-text h1 {
+        font-size: 3.5rem; /* E zvogëlojmë pak titullin e madh */
+    }
+    
+    /* Rreth Nesh */
+    .about .grid-2 {
+        display: flex;
+        flex-direction: column; /* I vendos tekstin dhe foton njëra pas tjetrës, jo anash */
+        gap: 40px;
+    }
+    
+    .about h3 {
+        font-size: 2rem;
+    }
+}
+
+/* 2. PËR TELEFONAV (Ekranet nën 768px gjerësi - SMARTPHONES) */
+@media (max-width: 768px) {
+    /* Header & Menuja */
+    header .container {
+        flex-direction: column; /* Logoja, Navigacioni dhe Butoni shkojnë njëri nën tjetrin */
+        gap: 15px;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-wrap: wrap; /* Nëse linqet janë të gjatë, zbresin në rresht të ri */
+        justify-content: center;
+        gap: 15px;
+        padding: 10px 0;
+    }
+
+    /* Hero Section (Kreu) */
+    .hero {
+        padding-top: 160px; /* Hapësirë që menuja e re më e lartë mos ta mbulojë tekstin */
+        padding-bottom: 80px;
+        text-align: center; /* E qendrojmë tekstin në telefon që duket më bukur */
+        justify-content: center;
+    }
+
+    .hero-text {
+        max-width: 100%;
+    }
+
+    .hero-text h1 {
+        font-size: 2.8rem; /* Madhësi ideale për ekran të telefonit */
+        letter-spacing: 1px;
+    }
+
+    .hero-text h2 {
+        font-size: 1.4rem;
+    }
+
+    .hero-text p {
+        font-size: 1rem;
+        margin-bottom: 25px;
+    }
+
+    /* Butoni te Hero */
+    .hero-actions .btn-secondary {
+        width: 100%; /* Në telefon butoni bëhet i plotë (full-width) për t'u klikuar më lehtë me gisht */
+        max-width: 280px;
+    }
+    
+    /* Rreth Nesh - Fotoja / Kombinimi */
+    .about-image-combined {
+        height: 300px; /* E ulim pak lartësinë në telefon */
+    }
+    
+    .about-floating-logo {
+        max-height: 130px;
+    }
+}
+
+/* Heqim nënvizimin dhe stilin default të linkut rreth logos */
+.logo-link {
+    text-decoration: none;
+    display: inline-block;
+    /* KORRIGJIMI KRYESOR: E shtyn logon dhe span-in më në të majtë */
+    margin-left: -50px; 
+    transition: transform 0.2s ease;
+}
+
+.logo-link:hover {
+    transform: scale(1.02); /* Një reagim i vogël vizual kur afrohet miu */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo img {
+    height: 65px;
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.15));
+}
+
+.logo span {
+    color: #111111;
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* RESPONSIVE CONTROL: Në telefon sigurohemi që logoja të kthehet në qendër dhe pa margin negativ */
+@media (max-width: 768px) {
+    .logo-link {
+        margin-left: 0;
+    }
+}
