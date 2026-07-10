@@ -941,3 +941,89 @@ header {
         margin-left: 0;
     }
 }
+
+/* ==========================================================================
+   KORRIGJIMI TOTAL PËR CELULAR (RESPONSIVE MASTER)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    /* 1. RREGULLIMI I CONTAINER-IT NË HEADER */
+    header .container {
+        display: flex;
+        flex-direction: column; /* I rreshton elementet te poshtë: 1. Logo, 2. Menuja, 3. Butoni */
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        padding: 15px 10px;
+        width: 100%;
+    }
+
+    /* Heqim margin negativ të logos në celular që të mos dalë jashtë ekranit */
+    .logo-link {
+        margin-left: 0 !important;
+    }
+
+    .logo img {
+        height: 50px; /* E zvogëlojmë pak në celular që të zërë më pak hapësirë */
+    }
+
+    .logo span {
+        font-size: 1.3rem;
+    }
+
+    /* 2. SHFAQJA E DETYRUAR E MENUSË (LINQEVE) */
+    header nav {
+        display: block !important; /* E detyron të shfaqet nëse ka qenë e fshehur */
+        width: 100%;
+    }
+
+    header nav ul {
+        display: flex !important; /* Detyron shfaqjen e linqet */
+        flex-direction: row; /* Rrinë në një rresht horizontal */
+        flex-wrap: wrap; /* Nëse nuk zënë vend, zbresin vetë në rresht të ri */
+        justify-content: center;
+        align-items: center;
+        gap: 12px; /* Hapësirë mes linqeve */
+        padding: 5px 0;
+        margin: 0;
+        list-style: none;
+    }
+
+    header nav ul li a {
+        font-size: 0.85rem; /* Madhësi kompakte për celular */
+        padding: 4px 6px;
+        color: #111111 !important; /* Sigurohet që shkronjat të jenë të zeza mbi sfond të bardhë */
+        font-weight: 600;
+    }
+
+    /* 3. BUTONI "BOOK A DEMO" NË CELULAR */
+    header .btn-primary {
+        display: inline-block !important; /* Detyron shfaqjen */
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        width: auto; /* Nuk e lëmë të bëhet gjigant, rri si buton kompakt në qendër */
+        margin-top: 5px;
+    }
+
+    /* 4. HERO SECTION (ZONA E MAKINËS) */
+    .hero {
+        padding-top: 190px; /* I jep shumë hapësirë nga lart që header-i i ri i gjatë mos ta mbulojë tekstin AUTOSOFT */
+        padding-bottom: 60px;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 2.3rem !important; /* Madhësi perfekte që fjala AUTOSOFT të mos ndahet në dysh */
+        line-height: 1.1;
+    }
+
+    .hero-text h2 {
+        font-size: 1.2rem !important;
+        margin-top: 10px;
+    }
+
+    .hero-text p {
+        font-size: 0.95rem;
+        padding: 0 10px;
+    }
+}
