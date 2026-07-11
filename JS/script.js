@@ -45,25 +45,60 @@ if (slider && prevBtn && nextBtn) {
     });
 }
 
-// LOGJIKA E AUTO-PLAY SLIDER
+// LOGJIKA E PËRDITËSUAR E AUTO-PLAY SLIDER
+// LOGJIKA E RREGULLUAR DHE E SIGURT E AUTO-PLAY SLIDER
 const autoSlider = document.getElementById('moduleSlider');
 
 if (autoSlider) {
-    const scrollSpeed = 3500; // Koha e lëvizjes: 3.5 sekonda (Ideale për lexim)
+    const scrollSpeed = 3500; // Çdo 3.5 sekonda ndërrohet karta
 
     setInterval(() => {
-        // Merr gjerësinë e një karte individuale plus gap-in prej 30px
-        const cardWidth = autoSlider.querySelector('.module-card').clientWidth + 30;
+        const firstCard = autoSlider.querySelector('.module-card');
+        if (!firstCard) return;
+
+        // Gjen në mënyrë dinamike gap-in aktual të aplikuar nga CSS
+        const computedStyle = window.getComputedStyle(autoSlider);
+        const gap = parseInt(computedStyle.gap) || 30;
+
+        // Llogarit saktë gjerësinë totale që zë një kartë së bashku me hapësirën anësore
+        const cardWidth = firstCard.getBoundingClientRect().width + gap;
         
-        // Llogarit pikën maksimale të scroll-it
+        // Pika maksimale e mundshme e scroll-it
         const maxScrollLeft = autoSlider.scrollWidth - autoSlider.clientWidth;
 
-        // Nëse kemi arritur në fund ose shumë afër fundit, kthehu në fillim
-        if (autoSlider.scrollLeft >= maxScrollLeft - 5) {
-            autoSlider.scrollLeft = 0;
+        // Kusht i fuqizuar: Nëse hapi i radhës shkon përtej fundit ose jemi shumë afër tij
+        if (autoSlider.scrollLeft + cardWidth >= maxScrollLeft + 5) {
+            autoSlider.scrollLeft = 0; // Kthehu butësisht te karta e parë
         } else {
-            // Përndryshe, lëvize djathtas për një kartë
-            autoSlider.scrollLeft += cardWidth;
+            autoSlider.scrollLeft += cardWidth; // Lëvize për një kartë të plotë
         }
     }, scrollSpeed);
+}
+
+// LOGJIKA PËR HAMBURGER MENU (DROPDOWN)
+const menuToggle = document.getElementById('menuToggle');
+const navMenu = document.getElementById('navMenu');
+const navLinks = document.querySelectorAll('#navMenu a');
+
+if (menuToggle && navMenu) {
+    // Kur klikohet ikona e menusë
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        
+        // Ndryshon ikonën nga ☰ (bars) në ✕ (x) kur është e hapur
+        const icon = menuToggle.querySelector('i');
+        if (navMenu.classList.contains('active')) {
+            icon.className = 'fas fa-times';
+        } else {
+            icon.className = 'fas fa-bars';
+        }
+    });
+
+    // Kur klikohet ndonjëri nga linqet, menuja mbyllet automatikisht (që të shohësh seksionin)
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            menuToggle.querySelector('i').className = 'fas fa-bars';
+        });
+    });
 }

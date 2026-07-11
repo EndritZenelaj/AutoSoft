@@ -1027,3 +1027,182 @@ header {
         padding: 0 10px;
     }
 }
+
+/* Fshehim butonin hamburger në laptop/desktop */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: #111111;
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   DROPDOWN MENU PËR CELULAR (RESPONSIVE MASTER)
+   ========================================================================== */
+@media (max-width: 768px) {
+    header .container {
+        display: flex;
+        flex-direction: row; /* Rrihen në një rresht: Logo majtas, Hamburger djathtas */
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+        position: relative;
+    }
+
+    /* Shfaqim butonin hamburger vetëm në celular */
+    .menu-toggle {
+        display: block;
+        z-index: 1001;
+    }
+
+    /* Fshehim butonin "Book a Demo" të header-it në celular që të mos zë vend */
+    header .header-btn {
+        display: none !important;
+    }
+
+    /* KTHIMI I NAVIGACIONIT NË DROPDOWN BLOCK */
+    header nav {
+        position: absolute;
+        top: 100%; /* Zbret ekzaktësisht në fund të header-it */
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.98);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        border-top: 1px solid #f0f0f0;
+        
+        /* Logjika e fshehjes fillestare për animacion */
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
+    }
+
+    /* Klasa që do të shtohet me JS kur klikohet hamburgeri */
+    header nav.active {
+        max-height: 350px; /* Hapësira që i mjafton linqeve për t'u shfaqur */
+    }
+
+    header nav ul {
+        display: flex !important;
+        flex-direction: column; /* Linqet shkojnë njëri nën tjetrin */
+        gap: 0;
+        padding: 15px 0;
+        text-align: center;
+    }
+
+    header nav ul li {
+        width: 100%;
+    }
+
+    header nav ul li a {
+        display: block;
+        padding: 12px 0;
+        font-size: 1.05rem;
+        color: #111111 !important;
+        border-bottom: 1px solid #f9f9f9;
+        width: 100%;
+    }
+    
+    header nav ul li:last-child a {
+        border-bottom: none; /* Heqim vijën te linku i fundit */
+    }
+
+    /* KORRIGJIMI PËR HERO SECTION */
+    .hero {
+        padding-top: 140px; /* Meqë header-i tani rri i ngushtë në celular, kjo hapësirë mjafton perfekt */
+        padding-bottom: 60px;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5rem !important;
+    }
+}
+
+@media (max-width: 600px) {
+    .module-slider {
+        overflow-x: hidden; /* Fshehim scrollbar-in që të duket krejtësisht i pastër */
+        display: flex;
+        gap: 20px; /* Hapësirë e vogël mes kartave gjatë lëvizjes */
+        padding: 10px 0;
+    }
+
+    .module-card {
+        /* KORRIGJIMI: Karta tani merr 100% të gjerësisë së ekranit minus gap-in */
+        flex: 0 0 100%; 
+        box-sizing: border-box;
+    }
+}
+
+/* --- STILIMI I FOOTER-IT --- */
+footer {
+    background-color: #111111; /* Sfond i zi/errët uniform */
+    padding: 30px 0;
+    border-top: 1px solid #222222;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between; /* Copyright majtas, linqet djathtas */
+    align-items: center;
+    flex-wrap: wrap; /* Për t'u përshtatur në celular */
+    gap: 15px;
+}
+
+.footer-copyright p {
+    color: #888888;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Stilimi i linqeve ligjore */
+.footer-legal-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-legal-links a {
+    color: #888888;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+/* Kur kalon miun mbi linqe, bëhen të kuqe ose të bardha */
+.footer-legal-links a:hover {
+    color: #e31b23; /* E kuqja zyrtare e AutoSoft */
+}
+
+.footer-legal-links .separator {
+    color: #444444; /* Vija ndarëse mes linqeve */
+    font-size: 0.85rem;
+}
+
+/* RESPONSIVE: Në celular i qendrojmë në mes njëra tjetrës */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    /* SHTO KËTË KOD BRENDA BLLOKUT @media (max-width: 768px) */
+
+/* Kthejmë rrjetin e karakteristikave në kolonë vetëm për celular */
+.features-grid, 
+#features .grid-3 { 
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 30px !important; /* Hapësirë mes tiketave kur shkojnë njëra nën tjetrën */
+    width: 100% !important;
+}
+
+/* Sigurohemi që tiketat individuale të qëndrojnë në qendër të ekranit të telefonit */
+.feature-item, 
+.feature-card { 
+    margin: 0 auto !important;
+}
+}
+
