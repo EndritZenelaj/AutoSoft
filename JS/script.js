@@ -102,3 +102,32 @@ if (menuToggle && navMenu) {
         });
     });
 }
+
+// LOGJIKA PËR FAQ ACCORDION
+document.addEventListener('DOMContentLoaded', () => {
+    const faqQuestions = document.querySelectorAll('.faq-question');
+
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const item = question.parentElement;
+            const answer = item.querySelector('.faq-answer');
+
+            // Nëse dëshiron që kur hapet njëra, të tjerat të mbyllen automatikisht:
+            document.querySelectorAll('.faq-item').forEach(i => {
+                if (i !== item && i.classList.contains('active')) {
+                    i.classList.remove('active');
+                    i.querySelector('.faq-answer').style.maxHeight = null;
+                }
+            });
+
+            // Ndërro gjendjen aktuale (Toggle)
+            item.classList.toggle('active');
+
+            if (item.classList.contains('active')) {
+                answer.style.maxHeight = answer.scrollHeight + "px";
+            } else {
+                answer.style.maxHeight = null;
+            }
+        });
+    });
+});

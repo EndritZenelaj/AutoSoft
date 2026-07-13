@@ -1206,3 +1206,227 @@ footer {
 }
 }
 
+/* --- 1. STILIMI I FAQ (AKORDEONI) --- */
+.faq-section {
+    background-color: #ffffff;
+    padding: 80px 0;
+}
+
+.faq-section .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #111111;
+    margin-bottom: 40px;
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.faq-item {
+    background-color: #f9f9f9;
+    border: 1px solid #eeeeee;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-question {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    background: none;
+    border: none;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #111111;
+    text-align: left;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.faq-question i {
+    font-size: 1rem;
+    color: #888888;
+    transition: transform 0.3s ease;
+}
+
+/* Kur pyetja është e hapur */
+.faq-item.active {
+    border-color: #e31b23;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.faq-item.active .faq-question {
+    color: #e31b23;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+    color: #e31b23;
+}
+
+/* Zona e përgjigjes (e fshehur fillimisht) */
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: #ffffff;
+}
+
+.faq-answer p {
+    padding: 0 25px 20px 25px;
+    color: #555555;
+    line-height: 1.6;
+    margin: 0;
+    font-size: 1rem;
+}
+
+/* --- 2. BUTONI FLUTURUES I WHATSAPP --- */
+.whatsapp-floating {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366; /* Ngjyra zyrtare e WhatsApp */
+    color: #ffffff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    transition: all 0.3s ease;
+}
+
+.whatsapp-floating:hover {
+    transform: scale(1.1) translateY(-5px);
+    background-color: #128c7e;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Përshtatja në celular */
+@media (max-width: 768px) {
+    .faq-question {
+        font-size: 1rem;
+        padding: 15px 20px;
+    }
+    .whatsapp-floating {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.8rem;
+    }
+}
+
+/* --- BUTONI FLUTURUES I WHATSAPP-IT --- */
+.whatsapp-floating {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366;
+    color: #ffffff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+/* --- BUTONI FLUTURUES I WHATSAPP-IT (VERSIONI TRANSPARENT) --- */
+.whatsapp-floating {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366;
+    color: #ffffff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); /* Hije më e lehtë */
+    z-index: 9999;
+    text-decoration: none;
+    
+    /* KORRIGJIMI: E bën të gjithë bllokun (ikonë + shkrim) 75% transparent fillimisht */
+    opacity: 0.75; 
+    transition: all 0.3s ease-in-out;
+}
+
+/* Stilimi i kutisë së tekstit në të majtë */
+.whatsapp-text {
+    position: absolute;
+    right: 75px;
+    background-color: rgba(255, 255, 255, 0.95); /* Kutia e bardhë pakëz transparente */
+    color: #333333; /* Ngjyrë gri e errët, jo krejt e zezë që të jetë më e butë */
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 20px;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    border: 1px solid #eeeeee;
+    pointer-events: none;
+}
+
+/* Trekëndëshi lidhës */
+.whatsapp-text::after {
+    content: '';
+    position: absolute;
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-width: 6px 0 6px 6px;
+    border-style: solid;
+    border-color: transparent transparent transparent rgba(255, 255, 255, 0.95);
+}
+
+/* EFEKTI HOVER: Kur afrohet miu, blloku bëhet 100% i plotë dhe ngrihet pak lart */
+.whatsapp-floating:hover {
+    opacity: 1; /* Kthehet në plotësisht i dukshëm */
+    transform: scale(1.03) translateY(-3px);
+    background-color: #128c7e;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* PËRSHTATJA PËR CELULAR */
+@media (max-width: 768px) {
+    .whatsapp-floating {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        font-size: 1.8rem;
+        opacity: 0.8; /* Në celular e lëmë pakëz më të dukshëm pasi nuk ka efekt hover me mi */
+    }
+    
+    .whatsapp-text {
+        right: 62px;
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 400px) {
+    .whatsapp-text {
+        display: none;
+    }
+}
