@@ -1430,3 +1430,131 @@ footer {
         display: none;
     }
 }
+
+/* ==========================================================================
+   RREGULLIMI I PERKRYER I HERO SECTION NE CELULAR
+   ========================================================================== */
+@media (max-width: 768px) {
+    /* Sigurohemi qe Hero Section merr 100% te gjeresise dhe pozicionohet ne qender */
+    .hero {
+        width: 100% !important;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+        padding-top: 130px !important; /* Hapesira e nevojshme nga header-i */
+        padding-bottom: 60px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        box-sizing: border-box !important;
+    }
+
+    .hero .container,
+    .hero-content,
+    .hero-text {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+
+    .hero-text h1 {
+        font-size: 2.2rem !important;
+        text-align: center !important;
+        width: 100% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .hero-text h2, 
+    .hero-text h3 {
+        font-size: 1.1rem !important;
+        text-align: center !important;
+        width: 100% !important;
+        margin-top: 10px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .hero-text p {
+        font-size: 0.95rem !important;
+        text-align: center !important;
+        width: 100% !important;
+        max-width: 340px !important; /* E mbajme tekstin te ngushte qe te mos prek anet */
+        margin: 15px auto !important; /* marxhina auto e fton ne qender */
+        line-height: 1.5 !important;
+    }
+
+    .hero .btn,
+    .hero .btn-primary,
+    .hero a.btn {
+        margin: 15px auto 0 auto !important; /* Butoni "MËSO MË SHUMË" i pozicionuar ekzakt ne mes */
+        display: inline-block !important;
+    }
+}
+
+/* --- SEKSIONI I STATISTIKAVE (STATS SECTION) --- */
+.stats-section {
+    background-color: #111111; /* Sfond i zi premium */
+    padding: 60px 0;
+    border-top: 1px solid #222222;
+    border-bottom: 1px solid #222222;
+}
+
+.stats-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.stat-box {
+    flex: 1;
+    min-width: 200px;
+    text-align: center;
+    padding: 10px;
+}
+
+.stat-number {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #e31b23; /* E kuqja zyrtare e AutoSoft */
+    margin-bottom: 8px;
+    line-height: 1;
+}
+
+.stat-label {
+    color: #cccccc;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* PËRSHTATJA PËR CELULAR */
+@media (max-width: 768px) {
+    .stats-section {
+        padding: 40px 0;
+    }
+
+    .stats-container {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important; /* Renditja 2x2 ne telefon */
+        gap: 25px 15px !important;
+    }
+
+    .stat-number {
+        font-size: 2.2rem !important;
+    }
+
+    .stat-label {
+        font-size: 0.85rem !important;
+    }
+}

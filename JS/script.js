@@ -131,3 +131,55 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 });
+
+// LOGJIKA E ANIMACIONIT TË NUMËRIMIT (COUNTER ANIMATION)
+document.addEventListener('DOMContentLoaded', () => {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    const statsSection = document.querySelector('.stats-section');
+
+    if (!statsSection || statNumbers.length === 0) return;
+
+    let animated = false;
+
+    const animateCounters = () => {
+        statNumbers.forEach(counter => {
+            const target = parseFloat(counter.getAttribute('data-target'));
+            const suffix = counter.getAttribute('data-suffix') || '';
+            const isFloat = target % 1 !== 0; // Kontrollon nëse është numër me presje (si 99.9)
+            
+            let current = 0;
+            const duration = 2000; // Kohëzgjatja e animacionit në milisekonda (2 sekonda)
+            const steps = 60;
+            const increment = target / steps;
+            const stepTime = duration / steps;
+
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+
+                // Formatimi i numrit (shtimi i presjes te 1,000 nëse dëshirohet)
+                let displayValue = isFloat ? current.toFixed(1) : Math.floor(current);
+                if (!isFloat && displayValue >= 1000) {
+                    displayValue = displayValue.toLocaleString('en-US'); // E bën 1,000
+                }
+
+                counter.innerText = displayValue + suffix;
+            }, stepTime);
+        });
+    };
+
+    // Përdorim IntersectionObserver që animacioni të nisë VETËM kur përdoruesi mbërrin te ky seksion
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !animated) {
+                animateCounters();
+                animated = true; // Ekzekutohet vetëm një herë kur shihet
+            }
+        });
+    }, { threshold: 0.4 }); // Aktivizohet kur 40% e seksionit është e dukshme në ekran
+
+    observer.observe(statsSection);
+});
