@@ -183,3 +183,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     observer.observe(statsSection);
 });
+
+// LOGJIKA E PRELOADER-IT
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    if (preloader) {
+        // Një vonesë e vogël (300ms) që të shihet animacioni i bukur
+        setTimeout(() => {
+            preloader.classList.add('hidden');
+        }, 300);
+    }
+});
